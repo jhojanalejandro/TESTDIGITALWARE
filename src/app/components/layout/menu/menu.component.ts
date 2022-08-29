@@ -1,8 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout'
 import {MatDialog} from '@angular/material/dialog';
-// import { SettingsComponent } from 'src/app/views/modals/settings.component';
-// import { UserService } from 'src/app/services/user.service';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
