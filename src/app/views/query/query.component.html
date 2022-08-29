@@ -1,0 +1,72 @@
+<div class="container">
+    <div>
+      <p>--Obtener una lista de clientes no mayores de 35 años que hayan realizado compras entre el
+        --1 de febrero de 2000 y el 25 de mayo de 2000</p>
+    </div>
+    <div class="example-loading-shade">
+      <table
+      class="w-full bg-transparent"
+      mat-table 
+      [dataSource]="dataSource"
+      cdkDropList          
+      cdkDropListOrientation="horizontal">
+  
+      <ng-container  *ngFor="let columna of columnas"  matColumnDef="{{columna.name}}" class="demo">
+          <th mat-header-cell class="centre" cdkDrag   *matHeaderCellDef> {{columna.title}} </th>
+          <td mat-cell   *matCellDef="let element">
+              <p style="text-align: left;"> {{element[columna.name] }}</p>
+          </td>
+    </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"  
+  >
+      </tr>
+  </table>
+  </div>
+  </div>
+  <br>
+  <div class="container">
+    <p>--Obtener la lista de productos cuya existencia en el inventario haya llegado al mínimo
+      --permitido (5 unidades)</p>
+  
+    <div class="example-loading-shade">
+      <table mat-table
+        class="mat-elevation-z8"  [dataSource]="dataSource2"
+        cdkDropList
+        cdkDropListOrientation="horizontal">
+  
+          <ng-container  *ngFor="let columna of columnas2"  matColumnDef="{{columna.name}}" class="demo">
+              <th mat-header-cell class="centre" cdkDrag    *matHeaderCellDef> {{columna.title}} </th>
+              <td mat-cell   *matCellDef="let element">
+                  <p style="text-align: left;"> {{element[columna.name] }}</p>
+              </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay2"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay2;" >
+        </tr>
+      </table>
+  </div>
+  </div>
+  
+  <div class="container">
+    <p>--Obtener el valor total vendido por cada producto en el año 2000</p>
+  
+    <div class="example-loading-shade">
+      <table mat-table
+        class="mat-elevation-z8"  [dataSource]="dataSource3"
+        cdkDropListOrientation="horizontal">
+          <ng-container  *ngFor="let columna of columnas3"  matColumnDef="{{columna.name}}" class="demo">
+              <th mat-header-cell class="centre" cdkDrag  *matHeaderCellDef> {{columna.title}} </th>
+              <td mat-cell    *matCellDef="let element">
+                  <p style="text-align: left;"> {{element[columna.name] }}</p>
+              </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay3"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay3;" >
+        </tr>
+      </table>
+  </div>
+  </div>
+  

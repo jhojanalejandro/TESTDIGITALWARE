@@ -1,0 +1,84 @@
+<mat-dialog-content class="mat-typography">
+    <p style="text-align: center; font-size: medium; text-decoration-style: dotted; text-decoration-color: black;">REGISTRAR VENTA</p>
+    <div class="option">
+</div>   
+<div class="container">
+    <form [formGroup]="formInventory" class="example-form">
+      <div class="drop1">   
+              <mat-form-field class="form" appearance="outline">
+                    <mat-label >Nombre cliente</mat-label>
+                    <mat-select formControlName="clientId" name="raffles">
+                        <mat-option id="clientId" class="ml-2 font-semibold uppercase" *ngFor="let client of clients" [value]="client.id">
+                            {{client.clientName}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="formInventory.get('clientId')">
+                        Este Campo es requerido
+                     </mat-error>
+                </mat-form-field>  
+                <mat-form-field class="form" appearance="outline">
+                  <mat-label >Nombre Producto</mat-label>
+                  <mat-select formControlName="productId" name="productId">
+                      <mat-option id="productId" class="ml-2 font-semibold uppercase" *ngFor="let product of products" [value]="product.id">
+                          {{product.productName}}
+                      </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="formInventory.get('productId')">
+                      Este Campo es requerido
+                   </mat-error>
+              </mat-form-field>   
+  
+              <mat-form-field class="form" appearance="outline">
+                <mat-label >Nombre Empleado</mat-label>
+                <mat-select formControlName="EmployeeId" name="raffles">
+                    <mat-option id="EmployeeId" class="ml-2 font-semibold uppercase" *ngFor="let employ of employee" [value]="employ.id">
+                        {{employ.employeeName}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="formInventory.get('EmployeeId')">
+                    Este Campo es requerido
+                 </mat-error>
+            </mat-form-field>
+      </div>
+      <br>
+            <div class="drop1">
+        
+                <mat-form-field class="form" appearance="outline">
+                    <mat-label>Precio total</mat-label>
+                    <input matInput type="number" id="totalPrice"   [value]="total" formControlName="totalPrice" autocomplete="off" placeholder="Precio total" >
+                    <mat-error *ngIf="formInventory.get('totalPrice')">
+                        Este Campo es requerido
+                     </mat-error>
+                </mat-form-field>
+  
+                <mat-form-field class="form" appearance="outline">
+                  <mat-label>Cantidad producto</mat-label>
+                  <input type="number"  id="productCant" formControlName="productCant" autocomplete="off" matInput placeholder="Cantiodad productos" >
+                  <mat-error *ngIf="formInventory.get('productCant')">
+                      Este Campo es requerido
+                   </mat-error>
+              </mat-form-field>
+
+              <mat-form-field (click)="picker.open()" class="example-full-width" appearance="outline">
+                <mat-label>Fecha Compra</mat-label>
+                <input matInput id="saleDate" autocomplete="off" formControlName="saleDate" [matDatepicker]="picker">
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-error *ngIf="formInventory.get('saleDate')">
+                    Este Campo es requerido
+                 </mat-error>
+              </mat-form-field>
+            </div>
+    
+      </form>
+      
+      <button mat-raised-button color="primary" [disabled]="formInventory.disabled" *ngIf="!formInventory.disabled" class="inventory" (click)="calculatePrice()">Calcular total</button>
+  
+  </div>
+    
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" mat-dialog-close (click)="close()">Cancelar</button>
+    <button mat-button type="submit"  (click)="AddInventory()">Aceptar</button>
+  </mat-dialog-actions>
+  

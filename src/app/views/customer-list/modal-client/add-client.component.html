@@ -1,0 +1,71 @@
+<mat-dialog-content class="mat-typography">
+    <p style="text-align: center; font-size: medium; text-decoration-style: dotted; text-decoration-color: black;">AGREGAR EMPLEADO</p>
+    <div class="option">
+</div>   
+    <form [formGroup]="formClient" class="example-form">
+        <div class="drop1">
+            <mat-form-field class="form" appearance="outline">
+                <mat-label>Nombre Cliente</mat-label>
+                <input type="text"  id="clientName" formControlName="clientName" autocomplete="off" matInput placeholder="Nombre Cliente" >
+                <mat-error *ngIf="formClient.get('clientName')">
+                    Este Campo es requerido
+                 </mat-error>
+            </mat-form-field>
+            <mat-form-field class="form" appearance="outline">
+                <mat-label>Apellido</mat-label>
+                <input type="text"  id="lastName" formControlName="lastName" autocomplete="off" matInput placeholder="Apellido" >
+                <mat-error *ngIf="formClient.get('lastName')">
+                    Este Campo es requerido
+                 </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form" appearance="outline">
+                <mat-label>Cedula</mat-label>
+                <input type="text"  id="identificationCard" formControlName="identificationCard" autocomplete="off" matInput placeholder="Cedula" >
+                <mat-error *ngIf="formClient.get('identificationCard')">
+                    Este Campo es requerido
+                 </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div >
+
+        </div>
+        <div class="drop1">
+
+    
+            <mat-form-field class="form" appearance="outline">
+                <mat-label>Correo</mat-label>
+                <input type="email" id="email" formControlName="email" autocomplete="off" matInput placeholder="Precio boleto" >
+                <mat-error *ngIf="formClient.get('email')">
+                    Este Campo es requerido
+                 </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field class="form" appearance="outline">
+                <mat-label >Telefono</mat-label>
+                <input type="text" id="phoneNumber" formControlName="phoneNumber" autocomplete="off" matInput placeholder="Telefono" >
+                <mat-error *ngIf="formClient.get('phoneNumber')">
+                    Este Campo es requerido
+                </mat-error>
+            </mat-form-field> 
+
+            <mat-form-field appearance="outline">
+                <mat-label>Edad</mat-label>
+                <input type="number" id="age" formControlName="age" autocomplete="off" matInput placeholder="Edad" >
+                <mat-error *ngIf="formClient.get('age')">
+                    Este Campo es requerido
+                 </mat-error>
+            </mat-form-field>
+        </div>
+    
+
+
+  </form>
+    
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" mat-dialog-close (click)="close()">Cancelar</button>
+    <button mat-button type="submit"  (click)="updateClient()">Guardar</button>
+  </mat-dialog-actions>
+  

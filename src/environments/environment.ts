@@ -3,7 +3,42 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiURL: 'https://localhost:44325/',
+    AddEmployeeEndpoint: 'Employee/Add',
+    updateEmployeeEndpoint: 'Employee/Update',
+    getAllEmployeeEndpoint: 'Employee/GetAll',
+    deleteEmployeeEndpoint: 'Employee/Delete/',
+    getByIdEmployeeEndpoint: 'Employee/GetById/',
+
+
+    AddClientEndpoint: 'Client/Add',
+    updateClientEndpoint: 'Client/Update',
+    getAllClientEndpoint: 'Client/GetAll',
+    getAllQueryEndpoint: 'Client/GetAllQuery',
+
+    deleteClientEndpoint: 'Client/Delete/',
+    getByIdClientEndpoint: 'Client/GetById/',
+
+    getAllCategoryEndpoint: 'Category/GetAll',
+    getByIdCategoryEndpoint: 'Category/GetById/',
+
+    AddProductDetailEndpoint: 'ProductDetail/Add',
+    updateProductDetailEndpoint: 'ProductDetail/Update',
+    getAllProductDetailEndpoint: 'ProductDetail/GetAll',
+    deleteProductDetailEndpoint: 'ProductDetail/Delete/',
+    getByIdProductDetailEndpoint: 'ProductDetail/GetById/',
+
+    AddProductEndpoint: 'Product/Add',
+    updateProductEndpoint: 'Product/Update',
+    updateProductCantEndpoint: 'Product/UpdateCant',
+    getAllProductEndpoint: 'Product/GetAll',
+    deleteProductEndpoint: 'Product/Delete/',
+    getByIdProductEndpoint: 'Product/GetById/',
+    getAllProductqueryEndpoint: 'Product/GetAllQuery',
+    getAllProductquery2Endpoint: 'Product/GetAllQuery2',
+
+
 };
 
 /*

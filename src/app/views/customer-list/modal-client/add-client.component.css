@@ -1,0 +1,14 @@
+.drop1{
+    display: inline-block;
+    margin: 0 10px;
+    /* //background-color: black; */
+}
+.form{
+    padding-left: 15px;
+    margin-right: 10px;
+    width: 170px;
+}
+.option{
+    justify-items: center;
+    text-align: center;
+}

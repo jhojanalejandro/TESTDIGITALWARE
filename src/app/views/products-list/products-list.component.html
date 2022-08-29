@@ -1,0 +1,110 @@
+<div class="example-loading-shade">
+    <div class="add">
+        <button mat-raised-button color="primary" (click)="addProduct()" >
+            <mat-icon> <span class="material-symbols-outlined"> add</span> </mat-icon>
+        </button>
+    </div>
+
+    <mat-form-field class="search" appearance="outline">
+        <mat-label><mat-icon >
+          search</mat-icon></mat-label>
+        <input   matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input>
+    </mat-form-field>
+    <table mat-table
+      class="mat-elevation-z8" matSort [dataSource]="dataSource"
+      cdkDropList
+      cdkDropListOrientation="horizontal">
+
+        <ng-container  *ngFor="let columna of columnas"  matColumnDef="{{columna.name}}" class="demo">
+            <th mat-header-cell class="centre" cdkDrag mat-sort-header   *matHeaderCellDef> {{columna.title}} </th>
+            <td mat-cell  *matCellDef="let element">
+                <p *ngIf="element[columna.name]!= element.id" > {{element[columna.name] }}</p>
+                <p style="text-align: left;" *ngIf="element[columna.name]== element.id" > {{element[columna.name] }}</p>
+                <p *ngIf="element[columna.name]== element.acciones">
+                    <button class="hidden sm:inline-flex ml-3" (click)="editProduct(element)" mat-flat-button [color]="'primary'">
+                        <mat-icon> <span class="material-symbols-outlined"> edit</span> </mat-icon>
+                    </button>
+
+                    <button style="margin-left: 5px;" class="hidden sm:inline-flex ml-3" (click)="deleteProduct(element)" mat-flat-button [color]="'warn'">
+                        <mat-icon>  <span class="material-symbols-outlined">delete</span></mat-icon>
+                    </button>
+                </p>
+            </td>
+      </ng-container>
+
+      <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No hay datos en la lista "{{input.value}}"</td>
+      </tr>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsToDisplay;" >
+      </tr>
+    </table>
+</div>
+<!-- 
+<dx-data-grid
+id="gridContainer"
+[dataSource]="'dataSource'"
+[remoteOperations]="false"
+[allowColumnReordering]="true"
+[rowAlternationEnabled]="true"
+[showBorders]="true"
+
+>
+<dxo-paging [pageSize]="10"></dxo-paging>
+<dxo-pager
+  [showPageSizeSelector]="true"
+  [allowedPageSizes]="[10, 25, 50, 100]"
+></dxo-pager>
+<dxo-search-panel
+  [visible]="true"
+  [highlightCaseSensitive]="true"
+></dxo-search-panel>
+<dxo-group-panel [visible]="true"></dxo-group-panel>
+<dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+
+<dxi-column dataField="Productos" [groupIndex]="0"></dxi-column>
+<dxi-column
+  dataField="Amount"
+  caption="Sale Amount"
+  dataType="number"
+  format="currency"
+  alignment="right"
+></dxi-column>
+<dxi-column
+  caption="Discount %"
+  dataField="Discount"
+  cellTemplate="discountCellTemplate"
+  dataType="number"
+  format="percent"
+  alignment="right"
+  [allowGrouping]="false"
+  cssClass="bullet"
+></dxi-column>
+<dxi-column dataField="productName" dataType="date"></dxi-column>
+<dxi-column dataField="categoryId" dataType="string"></dxi-column>
+<dxi-column dataField="price" dataType="string"></dxi-column>
+<dxi-column dataField="productCant" dataType="string"></dxi-column>
+<dxi-column dataField="actions" dataType="string" [width]="150"></dxi-column>
+
+<div *dxTemplate="let d of 'discountCellTemplate'">
+  <div class="chart-cell">
+    <dx-bullet
+      [showTarget]="false"
+      [showZeroLevel]="true"
+      [startScaleValue]="0"
+      [endScaleValue]="100"
+      [value]="d.value * 100"
+    >
+      <dxo-size [width]="150" [height]="35"></dxo-size>
+      <dxo-tooltip
+        [enabled]="true"
+        [paddingTopBottom]="2"
+      >
+        <dxo-font [size]="18"></dxo-font>
+      </dxo-tooltip>
+      <dxo-margin [top]="5" [bottom]="0" [left]="5"></dxo-margin>
+    </dx-bullet>
+  </div>
+</div>
+</dx-data-grid> -->

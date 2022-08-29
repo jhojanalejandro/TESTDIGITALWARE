@@ -1,0 +1,46 @@
+<div class="example-loading-shade">
+    <div class="add">
+        <button mat-raised-button color="primary" (click)="addClient()" >
+            <mat-icon> <span class="material-symbols-outlined"> add</span> </mat-icon>
+        </button>
+    </div>
+    <mat-form-field appearance="outline">
+        <mat-label><mat-icon >
+          search</mat-icon></mat-label>   
+        <input   matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input>
+    </mat-form-field>
+        <table
+            class="w-full bg-transparent"
+            mat-table
+            [dataSource]="dataSource"
+            cdkDropList          
+            cdkDropListOrientation="horizontal">
+            <ng-container  *ngFor="let columna of columnas"  matColumnDef="{{columna.name}}" class="demo">
+                <th mat-header-cell class="centre" cdkDrag   *matHeaderCellDef> {{columna.title}} </th>
+                <td mat-cell  [class.selected]="element.selected"
+                    (click)="element.selected = !element.selected;"   *matCellDef="let element">
+                    <p > {{element[columna.name] }}</p>
+                    <p *ngIf="element[columna.name]== element.acciones">
+                        <button class="hidden sm:inline-flex ml-3" (click)="editClient(element)" mat-flat-button [color]="'primary'">
+                            <mat-icon> <span class="material-symbols-outlined"> edit</span> </mat-icon>
+                        </button>
+    
+                        <button style="margin-left: 5px;" class="hidden sm:inline-flex ml-3" (click)="deleteClient(element)" mat-flat-button [color]="'warn'">
+                            <mat-icon>  <span class="material-symbols-outlined">delete</span></mat-icon>
+                        </button>
+                    </p>
+                </td>
+          </ng-container>
+                            
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+    
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"  
+>
+            </tr>
+        </table>
+</div>
+
+
